@@ -8,187 +8,191 @@ namespace Storage.UI
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            panelHeader  = new Panel();
-            lblAppIcon   = new Label();
-            lblAppTitle  = new Label();
-            lblWelcome   = new Label();
-            lblRole      = new Label();
-            btnLogout    = new Button();
-            panelCards   = new Panel();
+            panelHeader = new Panel();
+            lblAppIcon = new Label();
+            lblAppTitle = new Label();
+            lblWelcome = new Label();
+            lblRole = new Label();
+            btnLogout = new Button();
+            panelCards = new Panel();
             cardDatabase = new Panel();
-            cardReports  = new Panel();
-            cardUsers    = new Panel();
-            cardProfile  = new Panel();
-            cardAbout    = new Panel();
-            panelFooter  = new Panel();
-            lblFooter    = new Label();
-
+            cardReports = new Panel();
+            cardUsers = new Panel();
+            cardProfile = new Panel();
+            cardAbout = new Panel();
+            panelFooter = new Panel();
+            lblFooter = new Label();
             panelHeader.SuspendLayout();
             panelCards.SuspendLayout();
+            panelFooter.SuspendLayout();
             SuspendLayout();
-
-            // Form 
-            ClientSize    = new Size(1000, 540);
-            Text          = "Склад — Главное меню";
-            StartPosition = FormStartPosition.CenterScreen;
-            BackColor     = Theme.BgPage;
-            Font          = Theme.FontBase;
-            Load         += MainMenu_Load;
-
-            // panelHeader 
-            panelHeader.BackColor = Theme.Accent;
-            panelHeader.Dock      = DockStyle.Top;
-            panelHeader.Height    = 72;
-
-            lblAppIcon.Text      = "📦";
-            lblAppIcon.Font      = new Font("Segoe UI", 22f);
+            // 
+            // panelHeader
+            // 
+            panelHeader.Controls.Add(lblAppIcon);
+            panelHeader.Controls.Add(lblAppTitle);
+            panelHeader.Controls.Add(lblWelcome);
+            panelHeader.Controls.Add(lblRole);
+            panelHeader.Controls.Add(btnLogout);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(1000, 72);
+            panelHeader.TabIndex = 1;
+            // 
+            // lblAppIcon
+            // 
+            lblAppIcon.AutoSize = true;
+            lblAppIcon.Font = new Font("Segoe UI", 22F);
             lblAppIcon.ForeColor = Color.White;
-            lblAppIcon.Location  = new Point(18, 18);
-            lblAppIcon.AutoSize  = true;
-
-            lblAppTitle.Text      = "Система управления складом";
-            lblAppTitle.Font      = new Font("Segoe UI", 15f, FontStyle.Bold);
+            lblAppIcon.Location = new Point(3, 9);
+            lblAppIcon.Name = "lblAppIcon";
+            lblAppIcon.Size = new Size(73, 50);
+            lblAppIcon.TabIndex = 0;
+            lblAppIcon.Text = "📦";
+            // 
+            // lblAppTitle
+            // 
+            lblAppTitle.AutoSize = true;
+            lblAppTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             lblAppTitle.ForeColor = Color.White;
-            lblAppTitle.Location  = new Point(64, 12);
-            lblAppTitle.AutoSize  = true;
-
-            lblWelcome.Text      = "";
-            lblWelcome.Font      = Theme.FontBase;
+            lblAppTitle.Location = new Point(82, 9);
+            lblAppTitle.Name = "lblAppTitle";
+            lblAppTitle.Size = new Size(378, 35);
+            lblAppTitle.TabIndex = 1;
+            lblAppTitle.Text = "Система управления складом";
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
             lblWelcome.ForeColor = Color.FromArgb(185, 225, 185);
-            lblWelcome.Location  = new Point(66, 44);
-            lblWelcome.AutoSize  = true;
-
-            lblRole.Text      = "";
-            lblRole.Font      = new Font("Segoe UI", 9f, FontStyle.Bold);
+            lblWelcome.Location = new Point(82, 44);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(0, 20);
+            lblWelcome.TabIndex = 2;
+            // 
+            // lblRole
+            // 
+            lblRole.AutoSize = true;
+            lblRole.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblRole.ForeColor = Color.FromArgb(185, 225, 185);
-            lblRole.Location  = new Point(440, 44);
-            lblRole.AutoSize  = true;
-
-            btnLogout.Text      = "⏻  Выйти";
-            btnLogout.Location  = new Point(878, 20);
-            btnLogout.Size      = new Size(108, 32);
+            lblRole.Location = new Point(440, 44);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(0, 20);
+            lblRole.TabIndex = 3;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.FromArgb(180, 50, 40);
+            btnLogout.Cursor = Cursors.Hand;
+            btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = Color.White;
-            btnLogout.BackColor = Color.FromArgb(180, 50, 40);
-            btnLogout.FlatAppearance.BorderSize = 0;
-            btnLogout.Font      = Theme.FontBold;
-            btnLogout.Cursor    = Cursors.Hand;
-            btnLogout.Click    += btnLogout_Click;
-
-            panelHeader.Controls.AddRange(new Control[]
-                { lblAppIcon, lblAppTitle, lblWelcome, lblRole, btnLogout });
-
-            // panelCards 
-            panelCards.BackColor = Theme.BgPage;
-            panelCards.Dock      = DockStyle.Fill;
-
-            // Хелпер создания карточки
-            Panel MakeCard(string icon, string title, string desc, int x, int y, EventHandler handler)
-            {
-                var card = new Panel
-                {
-                    Size      = new Size(185, 170),
-                    Location  = new Point(x, y),
-                    BackColor = Theme.Accent,
-                    Cursor    = Cursors.Hand
-                };
-
-                var ico = new Label
-                {
-                    Text      = icon,
-                    Font      = new Font("Segoe UI", 28f),
-                    ForeColor = Color.White,
-                    Location  = new Point(65, 14),
-                    AutoSize  = true
-                };
-
-                var lTitle = new Label
-                {
-                    Text      = title,
-                    Font      = new Font("Segoe UI", 10f, FontStyle.Bold),
-                    ForeColor = Color.White,
-                    Location  = new Point(8, 80),
-                    Size      = new Size(169, 20),
-                    TextAlign = ContentAlignment.MiddleCenter
-                };
-
-                var lDesc = new Label
-                {
-                    Text      = desc,
-                    Font      = Theme.FontSmall,
-                    ForeColor = Color.FromArgb(200, 235, 200),
-                    Location  = new Point(8, 104),
-                    Size      = new Size(169, 36),
-                    TextAlign = ContentAlignment.MiddleCenter
-                };
-
-                card.Controls.AddRange(new Control[] { ico, lTitle, lDesc });
-
-                card.MouseEnter += (_, _) => { if (card.Enabled) card.BackColor = Theme.AccentHover; };
-                card.MouseLeave += (_, _) => { if (card.Enabled) card.BackColor = Theme.Accent; };
-
-                card.Click += handler;
-                foreach (Control c in card.Controls) c.Click += handler;
-
-                return card;
-            }
-
-            // Ряд 1
-            cardDatabase = MakeCard("📦", "База данных",
-                "Таблицы, поиск,\nдобавление записей",
-                30, 30,
-                (_, _) => cardDatabase_Click(null!, EventArgs.Empty));
-
-            cardReports = MakeCard("📊", "Отчёты",
-                "Аналитика\nи экспорт CSV",
-                240, 30,
-                (_, _) => cardReports_Click(null!, EventArgs.Empty));
-
-            cardUsers = MakeCard("👥", "Пользователи",
-                "Управление\nаккаунтами",
-                450, 30,
-                (_, _) => cardUsers_Click(null!, EventArgs.Empty));
-
-            // Ряд 2
-            cardProfile = MakeCard("👤", "Личный кабинет",
-                "Профиль\nи смена пароля",
-                135, 220,
-                (_, _) => cardProfile_Click(null!, EventArgs.Empty));
-
-            cardAbout = MakeCard("ℹ", "О программе",
-                "Версия, стек,\nроли, безопасность",
-                345, 220,
-                (_, _) => cardAbout_Click(null!, EventArgs.Empty));
-
-            panelCards.Controls.AddRange(new Control[]
-                { cardDatabase, cardReports, cardUsers, cardProfile, cardAbout });
-
-            //panelFooter
+            btnLogout.Location = new Point(878, 20);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(108, 32);
+            btnLogout.TabIndex = 4;
+            btnLogout.Text = "\u23fb  Выйти";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // panelCards
+            // 
+            panelCards.Controls.Add(cardDatabase);
+            panelCards.Controls.Add(cardReports);
+            panelCards.Controls.Add(cardUsers);
+            panelCards.Controls.Add(cardProfile);
+            panelCards.Controls.Add(cardAbout);
+            panelCards.Dock = DockStyle.Fill;
+            panelCards.Location = new Point(0, 72);
+            panelCards.Name = "panelCards";
+            panelCards.Size = new Size(1000, 440);
+            panelCards.TabIndex = 0;
+            // 
+            // cardDatabase
+            // 
+            cardDatabase.Cursor = Cursors.Hand;
+            cardDatabase.Location = new Point(30, 30);
+            cardDatabase.Name = "cardDatabase";
+            cardDatabase.Size = new Size(185, 170);
+            cardDatabase.TabIndex = 0;
+            // 
+            // cardReports
+            // 
+            cardReports.Cursor = Cursors.Hand;
+            cardReports.Location = new Point(240, 30);
+            cardReports.Name = "cardReports";
+            cardReports.Size = new Size(185, 170);
+            cardReports.TabIndex = 1;
+            // 
+            // cardUsers
+            // 
+            cardUsers.Cursor = Cursors.Hand;
+            cardUsers.Location = new Point(450, 30);
+            cardUsers.Name = "cardUsers";
+            cardUsers.Size = new Size(185, 170);
+            cardUsers.TabIndex = 2;
+            // 
+            // cardProfile
+            // 
+            cardProfile.Cursor = Cursors.Hand;
+            cardProfile.Location = new Point(135, 220);
+            cardProfile.Name = "cardProfile";
+            cardProfile.Size = new Size(185, 170);
+            cardProfile.TabIndex = 3;
+            // 
+            // cardAbout
+            // 
+            cardAbout.Cursor = Cursors.Hand;
+            cardAbout.Location = new Point(345, 220);
+            cardAbout.Name = "cardAbout";
+            cardAbout.Size = new Size(185, 170);
+            cardAbout.TabIndex = 4;
+            // 
+            // panelFooter
+            // 
             panelFooter.BackColor = Color.White;
-            panelFooter.Dock      = DockStyle.Bottom;
-            panelFooter.Height    = 28;
-
-            lblFooter.Text      = "Система управления складом  ·  .NET 8  ·  Windows Forms  ·  MS Access  ·  xUnit";
-            lblFooter.Font      = Theme.FontSmall;
-            lblFooter.ForeColor = Theme.TextMuted;
-            lblFooter.Location  = new Point(14, 7);
-            lblFooter.AutoSize  = true;
-
             panelFooter.Controls.Add(lblFooter);
-
-            Controls.AddRange(new Control[]
-                { panelCards, panelHeader, panelFooter });
-
-            panelHeader.ResumeLayout();
-            panelCards.ResumeLayout();
+            panelFooter.Dock = DockStyle.Bottom;
+            panelFooter.Location = new Point(0, 512);
+            panelFooter.Name = "panelFooter";
+            panelFooter.Size = new Size(1000, 28);
+            panelFooter.TabIndex = 2;
+            // 
+            // lblFooter
+            // 
+            lblFooter.AutoSize = true;
+            lblFooter.Location = new Point(14, 7);
+            lblFooter.Name = "lblFooter";
+            lblFooter.Size = new Size(542, 20);
+            lblFooter.TabIndex = 0;
+            lblFooter.Text = "Система управления складом  ·  .NET 8  ·  Windows Forms  ·  MS Access  ·  xUnit";
+            // 
+            // MainMenu
+            // 
+            ClientSize = new Size(1000, 540);
+            Controls.Add(panelCards);
+            Controls.Add(panelHeader);
+            Controls.Add(panelFooter);
+            Name = "MainMenu";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Склад — Главное меню";
+            Load += MainMenu_Load;
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            panelCards.ResumeLayout(false);
+            panelFooter.ResumeLayout(false);
+            panelFooter.PerformLayout();
             ResumeLayout(false);
         }
 
-        private Panel  panelHeader, panelCards, panelFooter;
-        private Label  lblAppIcon, lblAppTitle, lblWelcome, lblRole, lblFooter;
+        private Panel panelHeader, panelCards, panelFooter;
+        private Label lblAppIcon, lblAppTitle, lblWelcome, lblRole, lblFooter;
         private Button btnLogout;
-        private Panel  cardDatabase, cardReports, cardUsers, cardProfile, cardAbout;
+        private Panel cardDatabase, cardReports, cardUsers, cardProfile, cardAbout;
+        #endregion
     }
 }
