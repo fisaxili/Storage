@@ -80,8 +80,6 @@ namespace Storage.DAL
         }
 
         //Готовые запросы для отчётов 
-
-        // Отчёт 1: сколько на сумму поставил каждый поставщик
         // Отчёт 1: сколько на сумму поставил каждый поставщик
         public DataTable GetSupplierTotals()
         {
@@ -100,14 +98,16 @@ namespace Storage.DAL
         public DataTable GetWarehouseStockReport()
         {
             string sql = @"
-                SELECT с.Номер_Склада, с.ФИО_Кладовщика,
-                       SUM(п.Количество_Деталей) AS Всего_Деталей
-                FROM Склады AS с
-                    INNER JOIN Поставка AS п ON с.Код_Склада = п.Код_Склада
-                GROUP BY с.Номер_Склада, с.ФИО_Кладовщика
-                ORDER BY Всего_Деталей DESC";
+        SELECT с.Номер_Склада, 
+               с.ФИО_Кладовщика,
+               SUM(пост.Количество_Деталей) AS Всего_Деталей
+        FROM (Склады AS с 
+        INNER JOIN Поставка AS пост ON с.Код_Склада = пост.Код_Склада)
+        GROUP BY с.Номер_Склада, с.ФИО_Кладовщика
+        ORDER BY SUM(пост.Количество_Деталей) DESC";
             return RunQuery(sql);
         }
+
         // Отчёт 3: список деталей, отсортированных по цене (дорогие сверху)
         public DataTable GetPartsByPrice()
         {
