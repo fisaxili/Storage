@@ -79,7 +79,7 @@ namespace Storage.DAL
             RunNonQuery(sql, new[] { pkVal });
         }
 
-        // ── Готовые запросы для отчётов ───────────────────────────────
+        //Готовые запросы для отчётов 
 
         // Отчёт 1: сколько на сумму поставил каждый поставщик
         public DataTable GetSupplierTotals()
@@ -135,8 +135,6 @@ namespace Storage.DAL
                 ORDER BY пост.Код_Поставки";
             return RunQuery(sql);
         }
-
-        // ── Вспомогательные методы ────────────────────────────────────
 
         // Выполняем INSERT / UPDATE / DELETE с параметрами
         private void RunNonQuery(string sql, object?[] parameters)

@@ -8,7 +8,7 @@ namespace Storage.UI.Register
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelHeader = new Panel();
@@ -130,4 +130,5 @@ namespace Storage.UI.Register
         private TextBox txtLogin, txtPassword, txtConfirm;
         private Button  btnRegister, btnCancel;
     }
+    #endregion
 }

@@ -21,7 +21,7 @@ namespace Storage
         {
             ApplicationConfiguration.Initialize();
 
-            // ── 1. Проверка драйвера OLE DB ───────────────────────────
+            // 1. Проверка драйвера OLE DB 
             if (!CheckOleDbDriver())
             {
                 MessageBox.Show(
@@ -32,25 +32,25 @@ namespace Storage
                 return;
             }
 
-            // ── 2. Строка подключения ─────────────────────────────────
+            //2. Строка подключения 
             string cs = ConfigurationManager
                 .ConnectionStrings["StorageDB"]
                 .ConnectionString
                 .Replace("|DataDirectory|", AppDomain.CurrentDomain.BaseDirectory);
 
-            // ── 3. Инициализация БД ───────────────────────────────────
+            // 3. Инициализация БД 
             EnsureUsersTable(cs);
 
-            // ── 4. DI-контейнер ───────────────────────────────────────
+            // 4. DI-контейнер 
             var services = new ServiceCollection();
             ConfigureServices(services, cs);
             var provider = services.BuildServiceProvider();
 
-            // ── 5. Запуск ─────────────────────────────────────────────
+            // 5. Запуск 
             Application.Run(provider.GetRequiredService<LoginForm>());
         }
 
-        // ─────────────────────────────────────────────────────────────
+
         private static void ConfigureServices(ServiceCollection services, string cs)
         {
             // DAL
@@ -90,9 +90,9 @@ namespace Storage
             ));
         }
 
-        // ─────────────────────────────────────────────────────────────
+
         //  Создание таблицы Пользователи + дефолтный директор/admin
-        // ─────────────────────────────────────────────────────────────
+
         private static void EnsureUsersTable(string cs)
         {
             try

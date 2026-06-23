@@ -8,7 +8,7 @@ namespace Storage.UI.Profile
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelTop      = new Panel();
@@ -33,7 +33,7 @@ namespace Storage.UI.Profile
             groupPassword.SuspendLayout();
             SuspendLayout();
 
-            // ── Form ──────────────────────────────────────────────────
+            // Form 
             ClientSize      = new Size(460, 480);
             Text            = "Личный кабинет";
             StartPosition   = FormStartPosition.CenterParent;
@@ -43,7 +43,7 @@ namespace Storage.UI.Profile
             Font            = Theme.FontBase;
             Load           += ProfileForm_Load;
 
-            // ── panelTop ──────────────────────────────────────────────
+            // panelTop 
             panelTop.BackColor = Theme.Accent;
             panelTop.Dock      = DockStyle.Top;
             panelTop.Height    = 48;
@@ -55,7 +55,7 @@ namespace Storage.UI.Profile
             lblAppBar.AutoSize  = true;
             panelTop.Controls.Add(lblAppBar);
 
-            // ── panelCard — аватар + имя + роль ───────────────────────
+            //  panelCard 
             panelCard.BackColor = Color.White;
             panelCard.Location  = new Point(20, 60);
             panelCard.Size      = new Size(420, 90);
@@ -89,7 +89,7 @@ namespace Storage.UI.Profile
             panelCard.Controls.AddRange(new Control[]
                 { lblAvatarBg, lblLoginVal, lblRoleBadge });
 
-            // ── groupPassword ─────────────────────────────────────────
+            // groupPassword 
             groupPassword.Text      = "  Смена пароля";
             groupPassword.Font      = Theme.FontBold;
             groupPassword.ForeColor = Theme.Accent;
@@ -162,4 +162,5 @@ namespace Storage.UI.Profile
         private TextBox  txtOldPass, txtNewPass, txtConfirm;
         private Button   btnChangePassword;
     }
+    #endregion
 }

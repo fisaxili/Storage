@@ -8,7 +8,7 @@ namespace Storage.UI.Users
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelTop     = new Panel();
@@ -42,7 +42,7 @@ namespace Storage.UI.Users
             panelBot.SuspendLayout();
             SuspendLayout();
 
-            // ── Form ──────────────────────────────────────────────────
+            // Form 
             ClientSize      = new Size(920, 580);
             Text            = "Управление пользователями";
             StartPosition   = FormStartPosition.CenterParent;
@@ -52,7 +52,7 @@ namespace Storage.UI.Users
             Font            = Theme.FontBase;
             Load           += UsersForm_Load;
 
-            // ── panelTop ──────────────────────────────────────────────
+            // panelTop 
             panelTop.BackColor = Theme.Accent;
             panelTop.Dock      = DockStyle.Top;
             panelTop.Height    = 48;
@@ -64,12 +64,12 @@ namespace Storage.UI.Users
             lblAppBar.AutoSize  = true;
             panelTop.Controls.Add(lblAppBar);
 
-            // ── panelLeft — форма добавления + действия ───────────────
+            // panelLeft 
             panelLeft.BackColor = Theme.BgPage;
             panelLeft.Location  = new Point(0, 48);
             panelLeft.Size      = new Size(290, 500);
 
-            // grpAdd — добавить нового пользователя
+            // grpAdd 
             grpAdd.Text      = "  Новый пользователь";
             grpAdd.Font      = Theme.FontBold;
             grpAdd.ForeColor = Theme.Accent;
@@ -123,7 +123,7 @@ namespace Storage.UI.Users
                 { lblLoginLbl, txtLogin, lblPassLbl, txtPassword,
                   lblRoleLbl, cmbRole, btnAdd });
 
-            // grpActions — действия над выбранным пользователем
+            // grpActions 
             grpActions.Text      = "  Выбранный пользователь";
             grpActions.Font      = Theme.FontBold;
             grpActions.ForeColor = Theme.Accent;
@@ -163,7 +163,7 @@ namespace Storage.UI.Users
 
             panelLeft.Controls.AddRange(new Control[] { grpAdd, grpActions });
 
-            // ── panelRight — таблица пользователей ────────────────────
+            // panelRight 
             panelRight.BackColor = Color.White;
             panelRight.Location  = new Point(290, 48);
             panelRight.Size      = new Size(630, 500);
@@ -174,7 +174,7 @@ namespace Storage.UI.Users
 
             panelRight.Controls.Add(dgv);
 
-            // ── panelBot ──────────────────────────────────────────────
+            // panelBot
             panelBot.BackColor = Color.FromArgb(232, 241, 235);
             panelBot.Dock      = DockStyle.Bottom;
             panelBot.Height    = 30;
@@ -216,4 +216,5 @@ namespace Storage.UI.Users
         private Button       btnAdd, btnChangeRole, btnResetPass, btnDelete, btnRefresh;
         private DataGridView dgv;
     }
+    #endregion
 }

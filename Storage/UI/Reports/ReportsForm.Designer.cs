@@ -8,6 +8,7 @@ namespace Storage.UI.Reports
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
+        #region Windows Form Designer generated code
 
         private void InitializeComponent()
         {
@@ -29,7 +30,7 @@ namespace Storage.UI.Reports
             panelBot.SuspendLayout();
             SuspendLayout();
 
-            // ── Form ──────────────────────────────────────────────────
+            // Form 
             ClientSize    = new Size(960, 600);
             Text          = "Отчёты — Склад";
             StartPosition = FormStartPosition.CenterScreen;
@@ -37,7 +38,7 @@ namespace Storage.UI.Reports
             Font          = Theme.FontBase;
             Load         += ReportsForm_Load;
 
-            // ── panelTop ──────────────────────────────────────────────
+            // panelTop
             panelTop.BackColor = Theme.Accent;
             panelTop.Dock      = DockStyle.Top;
             panelTop.Height    = 50;
@@ -62,7 +63,7 @@ namespace Storage.UI.Reports
 
             panelTop.Controls.AddRange(new Control[] { btnBack, lblAppBar });
 
-            // ── panelCtrl ─────────────────────────────────────────────
+            //  panelCtrl 
             panelCtrl.BackColor = Color.White;
             panelCtrl.Dock      = DockStyle.Top;
             panelCtrl.Height    = 56;
@@ -101,11 +102,11 @@ namespace Storage.UI.Reports
             panelCtrl.Controls.AddRange(new Control[]
                 { lblReport, cmbReport, btnExecute, btnExport });
 
-            // ── dgvReport ─────────────────────────────────────────────
+            //  dgvReport 
             dgvReport.Dock = DockStyle.Fill;
             Theme.StyleGrid(dgvReport);
 
-            // ── panelBot ──────────────────────────────────────────────
+            //  panelBot 
             panelBot.BackColor = Color.FromArgb(232, 241, 235);
             panelBot.Dock      = DockStyle.Bottom;
             panelBot.Height    = 28;
@@ -133,4 +134,5 @@ namespace Storage.UI.Reports
         private ComboBox     cmbReport;
         private DataGridView dgvReport;
     }
+        #endregion
 }

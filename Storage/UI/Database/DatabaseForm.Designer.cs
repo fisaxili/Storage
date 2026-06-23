@@ -8,7 +8,7 @@ namespace Storage.UI.Database
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelTop    = new Panel();
@@ -36,7 +36,7 @@ namespace Storage.UI.Database
             panelRole.SuspendLayout();
             SuspendLayout();
 
-            // ── Form ──────────────────────────────────────────────────
+            // Form 
             ClientSize    = new Size(980, 620);
             Text          = "База данных — Склад";
             StartPosition = FormStartPosition.CenterScreen;
@@ -44,7 +44,7 @@ namespace Storage.UI.Database
             Font          = Theme.FontBase;
             Load         += DatabaseForm_Load;
 
-            // ── panelTop ──────────────────────────────────────────────
+            //panelTop 
             panelTop.BackColor = Theme.Accent;
             panelTop.Dock      = DockStyle.Top;
             panelTop.Height    = 50;
@@ -69,7 +69,7 @@ namespace Storage.UI.Database
 
             panelTop.Controls.AddRange(new Control[] { btnBack, lblAppBar });
 
-            // ── panelFilter ───────────────────────────────────────────
+            //panelFilter 
             panelFilter.BackColor = Color.White;
             panelFilter.Dock      = DockStyle.Top;
             panelFilter.Height    = 52;
@@ -115,11 +115,11 @@ namespace Storage.UI.Database
             panelFilter.Controls.AddRange(new Control[]
                 { lblTableLbl, cmbTable, lblSearch, txtSearch, btnRefresh });
 
-            // ── dgv ───────────────────────────────────────────────────
+            // dgv 
             dgv.Dock = DockStyle.Fill;
             Theme.StyleGrid(dgv);
 
-            // ── panelRole — статусная полоса ──────────────────────────
+            //  panelRole 
             panelRole.BackColor = Color.FromArgb(232, 241, 235);
             panelRole.Dock      = DockStyle.Bottom;
             panelRole.Height    = 28;
@@ -136,7 +136,7 @@ namespace Storage.UI.Database
 
             panelRole.Controls.AddRange(new Control[] { lblRole, lblRecCount });
 
-            // ── panelBottom — кнопки CRUD ─────────────────────────────
+            //panelBottom 
             panelBottom.BackColor = Color.White;
             panelBottom.Dock      = DockStyle.Bottom;
             panelBottom.Height    = 58;
@@ -182,4 +182,5 @@ namespace Storage.UI.Database
         private TextBox      txtSearch;
         private DataGridView dgv;
     }
+    #endregion
 }

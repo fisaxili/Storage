@@ -32,7 +32,7 @@ namespace Storage.BLL
             _session = session;
         }
 
-        // ── Проверки прав ─────────────────────────────────────────────
+        //Проверки прав 
 
         // Редактировать могут Директор и Кладовщик
         public bool CanEdit() =>
@@ -46,13 +46,13 @@ namespace Storage.BLL
         public bool CanReport() =>
             _session.CurrentRole is Roles.Director or Roles.Accountant;
 
-        // ── Чтение ────────────────────────────────────────────────────
+
 
         // Загружаем таблицу — доступно всем авторизованным пользователям
         public DataTable GetTable(string tableName) =>
             _repo.GetTable(tableName);
 
-        // ── CRUD ──────────────────────────────────────────────────────
+        //CRUD 
 
         public void AddRecord(string tableName, Dictionary<string, object?> values)
         {
@@ -75,7 +75,7 @@ namespace Storage.BLL
             _repo.DeleteRecord(tableName, GetPrimaryKey(tableName), pkValue);
         }
 
-        // ── Отчёты ────────────────────────────────────────────────────
+        // Отчёты 
 
         public DataTable GetTotalValueBySupplier()
         {
@@ -106,8 +106,7 @@ namespace Storage.BLL
             CheckCanReport();
             DataRepository.SaveToCsv(dt, filePath);
         }
-
-        // ── Вспомогательные ───────────────────────────────────────────
+        //Ошибки
 
         // Находим первичный ключ таблицы
         public static string GetPrimaryKey(string tableName) =>

@@ -8,7 +8,7 @@ namespace Storage.UI
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelHeader  = new Panel();
@@ -30,7 +30,7 @@ namespace Storage.UI
             panelCards.SuspendLayout();
             SuspendLayout();
 
-            // ── Form ──────────────────────────────────────────────────
+            // Form 
             ClientSize    = new Size(1000, 540);
             Text          = "Склад — Главное меню";
             StartPosition = FormStartPosition.CenterScreen;
@@ -38,7 +38,7 @@ namespace Storage.UI
             Font          = Theme.FontBase;
             Load         += MainMenu_Load;
 
-            // ── panelHeader ───────────────────────────────────────────
+            // panelHeader 
             panelHeader.BackColor = Theme.Accent;
             panelHeader.Dock      = DockStyle.Top;
             panelHeader.Height    = 72;
@@ -81,9 +81,7 @@ namespace Storage.UI
             panelHeader.Controls.AddRange(new Control[]
                 { lblAppIcon, lblAppTitle, lblWelcome, lblRole, btnLogout });
 
-            // ── panelCards ────────────────────────────────────────────
-            // 5 карточек в два ряда: [БД | Отчёты | Пользователи] верхний ряд
-            //                        [Профиль | О программе]       нижний ряд
+            // panelCards 
             panelCards.BackColor = Theme.BgPage;
             panelCards.Dock      = DockStyle.Fill;
 
@@ -168,7 +166,7 @@ namespace Storage.UI
             panelCards.Controls.AddRange(new Control[]
                 { cardDatabase, cardReports, cardUsers, cardProfile, cardAbout });
 
-            // ── panelFooter ───────────────────────────────────────────
+            //panelFooter
             panelFooter.BackColor = Color.White;
             panelFooter.Dock      = DockStyle.Bottom;
             panelFooter.Height    = 28;
@@ -194,4 +192,5 @@ namespace Storage.UI
         private Button btnLogout;
         private Panel  cardDatabase, cardReports, cardUsers, cardProfile, cardAbout;
     }
+    #endregion
 }

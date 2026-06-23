@@ -8,7 +8,7 @@ namespace Storage.UI.About
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
@@ -258,4 +258,5 @@ namespace Storage.UI.About
         private Label  lblCurrentUser;
         private Button btnClose;
     }
+    #endregion
 }

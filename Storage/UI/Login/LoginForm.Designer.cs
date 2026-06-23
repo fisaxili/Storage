@@ -8,7 +8,7 @@ namespace Storage.UI.Login
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-
+        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelLeft    = new Panel();
@@ -29,7 +29,7 @@ namespace Storage.UI.Login
             panelRight.SuspendLayout();
             SuspendLayout();
 
-            // ── Form ──────────────────────────────────────────────────
+            //  Form
             ClientSize      = new Size(680, 400);
             Text            = "Склад — Вход в систему";
             StartPosition   = FormStartPosition.CenterScreen;
@@ -38,7 +38,7 @@ namespace Storage.UI.Login
             BackColor       = Theme.BgPage;
             Font            = Theme.FontBase;
 
-            // ── panelLeft — брендовая полоса ──────────────────────────
+            // panelLeft 
             panelLeft.BackColor = Theme.Accent;
             panelLeft.Location  = new Point(0, 0);
             panelLeft.Size      = new Size(260, 400);
@@ -64,7 +64,7 @@ namespace Storage.UI.Login
 
             panelLeft.Controls.AddRange(new Control[] { lblBrand, lblSlogan, lblVersion });
 
-            // ── panelRight — форма входа ──────────────────────────────
+            // panelRight
             panelRight.BackColor = Theme.BgCard;
             panelRight.Location  = new Point(260, 0);
             panelRight.Size      = new Size(420, 400);
@@ -141,4 +141,5 @@ namespace Storage.UI.Login
         private Button    btnLogin;
         private LinkLabel lnkRegister;
     }
+    #endregion
 }
