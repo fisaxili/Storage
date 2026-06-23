@@ -8,20 +8,20 @@ namespace Storage.BLL
     // после 3 неверных попыток вход блокируется на 30 минут.
     public class AuthService
     {
-        private readonly IDbManager  _db;
+        private readonly IDbManager _db;
         private readonly UserSession _session;
 
         // Счётчик неудачных попыток и время окончания блокировки
-        private int       _failedAttempts;
+        private int _failedAttempts;
         private DateTime? _lockedUntil;
 
-        private const int MaxAttempts       = 3;
-        private const int LockoutMinutes    = 30;
+        private const int MaxAttempts = 3;
+        private const int LockoutMinutes = 30;
         private const int MinPasswordLength = 6;
 
         public AuthService(IDbManager db, UserSession session)
         {
-            _db      = db;
+            _db = db;
             _session = session;
         }
 
@@ -31,10 +31,10 @@ namespace Storage.BLL
                 ? _lockedUntil.Value - DateTime.Now
                 : null;
 
-        // ── Вход ──────────────────────────────────────────────────────
+        //ВХОД
 
         // Пытаемся войти. Возвращает true при успехе.
-        // Если слишком много ошибок — выбрасывает исключение с пояснением
+        // Если слишком много ошибок —  исключение
         public bool Login(string login, string plainPassword)
         {
             // Сначала проверяем не заблокирован ли аккаунт
@@ -52,7 +52,7 @@ namespace Storage.BLL
 
             if (role != null)
             {
-                // Успех — сбрасываем счётчик и сохраняем пользователя в сессии
+                // Если успех — сбрасываем счётчик и сохраняем пользователя в сессии
                 _failedAttempts = 0;
                 _lockedUntil    = null;
                 _session.SetUser(login, role);
@@ -67,7 +67,7 @@ namespace Storage.BLL
             return false;
         }
 
-        // ── Регистрация ───────────────────────────────────────────────
+        //РЕГИСТРАЦИЯ 
 
         // Регистрируем нового пользователя.
         // Новые аккаунты всегда получают роль "Гость" — директор может повысить потом
@@ -78,7 +78,7 @@ namespace Storage.BLL
             return _db.AddNewUser(login, hash, Roles.Guest);
         }
 
-        // ── Смена пароля ──────────────────────────────────────────────
+        //СМЕНА ПАРОЛЯ
 
         public bool ChangePassword(string oldPlain, string newPlain)
         {
@@ -93,11 +93,11 @@ namespace Storage.BLL
             return _db.UpdatePassword(_session.CurrentUserName!, oldHash, newHash);
         }
 
-        // ── Выход ─────────────────────────────────────────────────────
+        // ВЫХОД
 
         public void LogOut() => _session.Clear();
 
-        // ── Вспомогательные ───────────────────────────────────────────
+        //Проверка на пустые поля 
 
         private bool IsLocked() =>
             _lockedUntil.HasValue && DateTime.Now < _lockedUntil.Value;
