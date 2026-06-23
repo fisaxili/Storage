@@ -11,14 +11,14 @@ namespace Storage.UI.Users
     /// </summary>
     public partial class UsersForm : Form
     {
-        private readonly string      _connectionString;
+        private readonly string _connectionString;
         private readonly UserSession _session;
-        private DataTable?           _dt;
+        private DataTable? _dt;
 
         public UsersForm(string connectionString, UserSession session)
         {
             _connectionString = connectionString;
-            _session          = session;
+            _session = session;
             InitializeComponent();
         }
 
@@ -33,7 +33,7 @@ namespace Storage.UI.Users
         {
             try
             {
-                using var conn    = new OleDbConnection(_connectionString);
+                using var conn = new OleDbConnection(_connectionString);
                 using var adapter = new OleDbDataAdapter(
                     "SELECT Код_Пользователя, Логин, Роль FROM Пользователи ORDER BY Логин",
                     conn);
@@ -57,9 +57,9 @@ namespace Storage.UI.Users
         // ── Добавить пользователя ─────────────────────────────────────
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var login    = txtLogin.Text.Trim();
+            var login = txtLogin.Text.Trim();
             var password = txtPassword.Text;
-            var role     = cmbRole.SelectedItem?.ToString() ?? Roles.Guest;
+            var role = cmbRole.SelectedItem?.ToString() ?? Roles.Guest;
 
             if (string.IsNullOrWhiteSpace(login))
             { ShowError("Введите логин."); return; }
@@ -103,7 +103,7 @@ namespace Storage.UI.Users
         {
             if (dgv.CurrentRow == null || _dt == null) return;
 
-            var row   = _dt.Rows[dgv.CurrentRow.Index];
+            var row = _dt.Rows[dgv.CurrentRow.Index];
             var login = row["Логин"].ToString()!;
             var newRole = cmbRole.SelectedItem?.ToString();
 
@@ -193,5 +193,10 @@ namespace Storage.UI.Users
 
         private void ShowError(string msg) =>
             MessageBox.Show(msg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+        private void panelBot_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -28,5 +28,25 @@ namespace Storage.UI.About
         {
 
         }
+
+        private void panelRoles_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblAppName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblIcon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblAuthor_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

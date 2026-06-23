@@ -8,7 +8,6 @@ namespace Storage.UI
             if (disposing && components != null) components.Dispose();
             base.Dispose(disposing);
         }
-        #region Windows Form Designer generated code
         private void InitializeComponent()
         {
             panelHeader  = new Panel();
@@ -192,5 +191,4 @@ namespace Storage.UI
         private Button btnLogout;
         private Panel  cardDatabase, cardReports, cardUsers, cardProfile, cardAbout;
     }
-    #endregion
 }

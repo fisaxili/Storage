@@ -17,7 +17,9 @@ namespace Storage.UI.About
             lblAppName = new Label();
             lblVersion = new Label();
             panelBody = new Panel();
+            lblAuthorTitle = new Label();
             lblDesc = new Label();
+            lblAuthor = new Label();
             panelTech = new Panel();
             lblTechTitle = new Label();
             lblTech = new Label();
@@ -25,8 +27,6 @@ namespace Storage.UI.About
             lblRolesTitle = new Label();
             lblRoles = new Label();
             panelAuthor = new Panel();
-            lblAuthorTitle = new Label();
-            lblAuthor = new Label();
             lblCurrentUser = new Label();
             btnClose = new Button();
             panelTop.SuspendLayout();
@@ -45,7 +45,7 @@ namespace Storage.UI.About
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(500, 110);
+            panelTop.Size = new Size(517, 110);
             panelTop.TabIndex = 0;
             // 
             // lblIcon
@@ -53,29 +53,31 @@ namespace Storage.UI.About
             lblIcon.AutoSize = true;
             lblIcon.Font = new Font("Segoe UI", 40F);
             lblIcon.ForeColor = Color.White;
-            lblIcon.Location = new Point(20, 28);
+            lblIcon.Location = new Point(3, 9);
             lblIcon.Name = "lblIcon";
             lblIcon.Size = new Size(130, 89);
             lblIcon.TabIndex = 0;
             lblIcon.Text = "📦";
+            lblIcon.Click += lblIcon_Click;
             // 
             // lblAppName
             // 
             lblAppName.AutoSize = true;
             lblAppName.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             lblAppName.ForeColor = Color.White;
-            lblAppName.Location = new Point(110, 28);
+            lblAppName.Location = new Point(127, 30);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(378, 35);
             lblAppName.TabIndex = 1;
             lblAppName.Text = "Система управления складом";
+            lblAppName.Click += lblAppName_Click;
             // 
             // lblVersion
             // 
             lblVersion.AutoSize = true;
             lblVersion.Font = new Font("Segoe UI", 8.5F);
             lblVersion.ForeColor = Color.FromArgb(185, 225, 185);
-            lblVersion.Location = new Point(112, 65);
+            lblVersion.Location = new Point(136, 65);
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(146, 20);
             lblVersion.TabIndex = 2;
@@ -93,28 +95,50 @@ namespace Storage.UI.About
             panelBody.Controls.Add(btnClose);
             panelBody.Location = new Point(0, 110);
             panelBody.Name = "panelBody";
-            panelBody.Size = new Size(500, 400);
+            panelBody.Size = new Size(517, 575);
             panelBody.TabIndex = 1;
+            // 
+            // lblAuthorTitle
+            // 
+            lblAuthorTitle.AutoSize = true;
+            lblAuthorTitle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblAuthorTitle.ForeColor = Color.FromArgb(45, 106, 79);
+            lblAuthorTitle.Location = new Point(8, 9);
+            lblAuthorTitle.Name = "lblAuthorTitle";
+            lblAuthorTitle.Size = new Size(118, 21);
+            lblAuthorTitle.TabIndex = 0;
+            lblAuthorTitle.Text = "Безопасность";
             // 
             // lblDesc
             // 
             lblDesc.Font = new Font("Segoe UI", 9.5F);
             lblDesc.ForeColor = Color.FromArgb(23, 37, 23);
-            lblDesc.Location = new Point(20, 16);
+            lblDesc.Location = new Point(16, 16);
             lblDesc.Name = "lblDesc";
-            lblDesc.Size = new Size(460, 56);
+            lblDesc.Size = new Size(460, 43);
             lblDesc.TabIndex = 0;
             lblDesc.Text = "Настольное приложение для автоматизации учёта\nна складе: ведение справочников деталей и поставщиков,\nуправление поставками, формирование аналитических отчётов.";
+            // 
+            // lblAuthor
+            // 
+            lblAuthor.Font = new Font("Segoe UI", 9.5F);
+            lblAuthor.ForeColor = Color.FromArgb(23, 37, 23);
+            lblAuthor.Location = new Point(8, 30);
+            lblAuthor.Name = "lblAuthor";
+            lblAuthor.Size = new Size(469, 72);
+            lblAuthor.TabIndex = 1;
+            lblAuthor.Text = "🔒 Пароли хранятся как SHA-256 хеш\n🛡 Защита от SQL-инъекций\n⏱ Брутфорс: 3 попытки → блокировка 30 мин";
+            lblAuthor.Click += lblAuthor_Click;
             // 
             // panelTech
             // 
             panelTech.BackColor = Color.FromArgb(232, 241, 235);
             panelTech.Controls.Add(lblTechTitle);
             panelTech.Controls.Add(lblTech);
-            panelTech.Location = new Point(16, 82);
+            panelTech.Location = new Point(16, 62);
             panelTech.Name = "panelTech";
             panelTech.Padding = new Padding(12, 8, 12, 8);
-            panelTech.Size = new Size(466, 90);
+            panelTech.Size = new Size(489, 123);
             panelTech.TabIndex = 1;
             // 
             // lblTechTitle
@@ -122,7 +146,7 @@ namespace Storage.UI.About
             lblTechTitle.AutoSize = true;
             lblTechTitle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTechTitle.ForeColor = Color.FromArgb(45, 106, 79);
-            lblTechTitle.Location = new Point(12, 10);
+            lblTechTitle.Location = new Point(8, 8);
             lblTechTitle.Name = "lblTechTitle";
             lblTechTitle.Size = new Size(141, 21);
             lblTechTitle.TabIndex = 0;
@@ -132,9 +156,9 @@ namespace Storage.UI.About
             // 
             lblTech.Font = new Font("Segoe UI", 9.5F);
             lblTech.ForeColor = Color.FromArgb(23, 37, 23);
-            lblTech.Location = new Point(12, 32);
+            lblTech.Location = new Point(8, 31);
             lblTech.Name = "lblTech";
-            lblTech.Size = new Size(442, 52);
+            lblTech.Size = new Size(442, 84);
             lblTech.TabIndex = 1;
             lblTech.Text = "• Платформа: .NET 8 (Windows)\n• Интерфейс: Windows Forms\n• База данных: Microsoft Access (.accdb) через OLE DB\n• Тесты: xUnit  ·  DI: Microsoft.Extensions.DependencyInjection";
             // 
@@ -143,17 +167,18 @@ namespace Storage.UI.About
             panelRoles.BackColor = Color.White;
             panelRoles.Controls.Add(lblRolesTitle);
             panelRoles.Controls.Add(lblRoles);
-            panelRoles.Location = new Point(16, 182);
+            panelRoles.Location = new Point(16, 191);
             panelRoles.Name = "panelRoles";
-            panelRoles.Size = new Size(466, 136);
+            panelRoles.Size = new Size(489, 220);
             panelRoles.TabIndex = 2;
+            panelRoles.Paint += panelRoles_Paint;
             // 
             // lblRolesTitle
             // 
             lblRolesTitle.AutoSize = true;
             lblRolesTitle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblRolesTitle.ForeColor = Color.FromArgb(45, 106, 79);
-            lblRolesTitle.Location = new Point(0, 0);
+            lblRolesTitle.Location = new Point(3, 9);
             lblRolesTitle.Name = "lblRolesTitle";
             lblRolesTitle.Size = new Size(174, 21);
             lblRolesTitle.TabIndex = 0;
@@ -163,9 +188,9 @@ namespace Storage.UI.About
             // 
             lblRoles.Font = new Font("Segoe UI", 9.5F);
             lblRoles.ForeColor = Color.FromArgb(23, 37, 23);
-            lblRoles.Location = new Point(0, 24);
+            lblRoles.Location = new Point(3, 33);
             lblRoles.Name = "lblRoles";
-            lblRoles.Size = new Size(466, 106);
+            lblRoles.Size = new Size(466, 176);
             lblRoles.TabIndex = 1;
             lblRoles.Text = resources.GetString("lblRoles.Text");
             lblRoles.Click += lblRoles_Click_1;
@@ -175,31 +200,10 @@ namespace Storage.UI.About
             panelAuthor.BackColor = Color.FromArgb(232, 241, 235);
             panelAuthor.Controls.Add(lblAuthorTitle);
             panelAuthor.Controls.Add(lblAuthor);
-            panelAuthor.Location = new Point(16, 310);
+            panelAuthor.Location = new Point(16, 417);
             panelAuthor.Name = "panelAuthor";
-            panelAuthor.Size = new Size(466, 62);
+            panelAuthor.Size = new Size(489, 107);
             panelAuthor.TabIndex = 3;
-            // 
-            // lblAuthorTitle
-            // 
-            lblAuthorTitle.AutoSize = true;
-            lblAuthorTitle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblAuthorTitle.ForeColor = Color.FromArgb(45, 106, 79);
-            lblAuthorTitle.Location = new Point(12, 10);
-            lblAuthorTitle.Name = "lblAuthorTitle";
-            lblAuthorTitle.Size = new Size(118, 21);
-            lblAuthorTitle.TabIndex = 0;
-            lblAuthorTitle.Text = "Безопасность";
-            // 
-            // lblAuthor
-            // 
-            lblAuthor.Font = new Font("Segoe UI", 9.5F);
-            lblAuthor.ForeColor = Color.FromArgb(23, 37, 23);
-            lblAuthor.Location = new Point(12, 32);
-            lblAuthor.Name = "lblAuthor";
-            lblAuthor.Size = new Size(442, 22);
-            lblAuthor.TabIndex = 1;
-            lblAuthor.Text = "🔒 Пароли хранятся как SHA-256 хеш  ·  🛡 Защита от SQL-инъекций  ·  ⏱ Брутфорс: 3 попытки → блокировка 30 мин";
             // 
             // lblCurrentUser
             // 
@@ -215,7 +219,7 @@ namespace Storage.UI.About
             // 
             btnClose.DialogResult = DialogResult.Cancel;
             btnClose.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            btnClose.Location = new Point(178, 355);
+            btnClose.Location = new Point(179, 530);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(144, 36);
             btnClose.TabIndex = 5;
@@ -225,7 +229,7 @@ namespace Storage.UI.About
             // 
             BackColor = Color.FromArgb(240, 244, 240);
             CancelButton = btnClose;
-            ClientSize = new Size(500, 560);
+            ClientSize = new Size(517, 688);
             Controls.Add(panelTop);
             Controls.Add(panelBody);
             Font = new Font("Segoe UI", 9.5F);
